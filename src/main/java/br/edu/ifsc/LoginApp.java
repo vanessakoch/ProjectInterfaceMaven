@@ -37,7 +37,7 @@ public class LoginApp extends Application {
         scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         panel.getStyleClass().add("panel-primary");
 		stage.setScene(scene);
-        stage.setTitle(Strings.appTitle);
+        stage.setTitle(Strings.appLogin);
 		stage.setResizable(false);
 		stage.show();
 		layout();
