@@ -1,6 +1,5 @@
 package br.edu.ifsc;
 
-
 public class Strings {
 	public static final String btnEntrar = "Entrar";
 	public static final String menuExit = "Sair";
@@ -50,7 +49,7 @@ public class Strings {
 	public static final String lblCnpjR = "Cnpj Remetente";
 	public static final String lblCidadeD = "Cidade (entrega)";
 	public static final String lblCnpjD = "Cnpj Destinário";
-	public static final String lblOpFiscal = "Operação Fiscal" ;
+	public static final String lblOpFiscal = "Operação Fiscal";
 	public static final String lblCfop = "CFOP";
 	public static final String lblProduto = "Produto";
 	public static final String lblPeso = "Peso da carga";
@@ -63,12 +62,10 @@ public class Strings {
 	public static final String lblTotalReceber = "Total a Receber";
 	public static final String lblTotalFrete = "Total de Frete";
 	public static final String btnFinalizar = "Finalizar";
-	public static final String btnPesquisar = "Pesquisar CTe"; 
+	public static final String btnPesquisar = "Pesquisar CTe";
 	public static final String btnXml = "Importar XML";
 	public static final String btnVisualizar = "Visualizar CTe";
 	public static final String btnImprimir = "Imprimir CTe";
 	public static final String btnVoltar = "Voltar";
-	
 
-	
 }
