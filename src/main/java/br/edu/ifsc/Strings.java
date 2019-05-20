@@ -3,6 +3,7 @@ package br.edu.ifsc;
 public class Strings {
 	public static final String btnEntrar = "Entrar";
 	public static final String menuExit = "Sair";
+	public static final String btnOk = "OK";
 	public static final String txtLogin = "Digite seu login...";
 	public static final String txtSenha = "Digite sua senha...";
 	public static final String lblLogin = "Área de Acesso";
@@ -67,5 +68,6 @@ public class Strings {
 	public static final String btnVisualizar = "Visualizar CTe";
 	public static final String btnImprimir = "Imprimir CTe";
 	public static final String btnVoltar = "Voltar";
-
+	public static final String loginError = "Digite o usuário!";
+	public static final String passwordError = "Digite a senha!";
 }

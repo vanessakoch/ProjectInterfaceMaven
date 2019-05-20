@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,10 +36,11 @@ public class CTeApp extends Application {
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-
 		Scene scene = new Scene(panel);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().add("panel-primary");
+		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
+		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
 		stage.setTitle(Strings.appConhecimento);
 		stage.setResizable(false);
@@ -268,5 +270,8 @@ public class CTeApp extends Application {
 				}
 			}
 		});
+		
 	}
+
+	
 }

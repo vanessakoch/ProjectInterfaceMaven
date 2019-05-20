@@ -1,7 +1,5 @@
 package br.edu.ifsc;
 
-import javax.swing.JOptionPane;
-
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,9 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-
 public class LoginApp extends Application {
-	
+
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtLogin;
@@ -24,20 +21,20 @@ public class LoginApp extends Application {
 	private Button btnEntrar;
 	private Label lblLogin;
 	private static Stage stage;
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		components();
-		listeners();		
+		listeners();
 		Scene scene = new Scene(panel);
-        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        panel.getStyleClass().add("panel-primary");
+		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+		panel.getStyleClass().add("panel-primary");
 		stage.setScene(scene);
-        stage.setTitle(Strings.appLogin);
+		stage.setTitle(Strings.appLogin);
 		stage.setResizable(false);
 		stage.show();
 		layout();
@@ -66,28 +63,45 @@ public class LoginApp extends Application {
 		txtLogin.setPromptText(Strings.txtLogin);
 		txtSenha.setPromptText(Strings.txtSenha);
 		btnEntrar = new Button(Strings.btnEntrar);
-        lblLogin.getStyleClass().setAll("strong");        
-        btnEntrar.getStyleClass().setAll("btn", "btn-danger");
-        pane.getChildren().addAll(lblLogin, txtLogin, txtSenha, btnEntrar);
-        panel.setBody(pane);
+		lblLogin.getStyleClass().setAll("strong");
+		btnEntrar.getStyleClass().setAll("btn", "btn-danger");
+		pane.getChildren().addAll(lblLogin, txtLogin, txtSenha, btnEntrar);
+		panel.setBody(pane);
 	}
-	
-	private void listeners() {	
-		btnEntrar.setOnAction(new EventHandler<ActionEvent>() {	
-			public void handle(ActionEvent event) {
-				if (txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
+
+	private void listeners() {
+		btnEntrar.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				if (txtLogin.getText().isEmpty()) {
 					try {
-						new MenuApp().start(new Stage());
-						LoginApp.stage.close();
+						new Error(Strings.loginError).start(new Stage());
+
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Login e/ou senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				if (!txtSenha.getText().equals("admin")) {
+					try {
+						new Error(Strings.passwordError).start(new Stage());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return;
+				}
+
+				try {
+					new MenuApp().start(new Stage());
+					LoginApp.stage.close();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
+
 		});
+
 	}
-	
 
 }

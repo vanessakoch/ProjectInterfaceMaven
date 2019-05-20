@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MenuApp extends Application {
@@ -66,7 +67,8 @@ public class MenuApp extends Application {
 		menuBar.getStyleClass().addAll("btn", "btn-info");
 		panel.setLeft(menuBar);
 		panel.getStyleClass().addAll("panel", "panel-primary");
-
+		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
+		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
 		stage.setTitle(Strings.appMenu);
 		stage.setResizable(false);
