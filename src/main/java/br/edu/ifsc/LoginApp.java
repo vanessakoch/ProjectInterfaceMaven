@@ -2,13 +2,12 @@ package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -32,7 +31,9 @@ public class LoginApp extends Application {
 		listeners();
 		Scene scene = new Scene(panel);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().add("panel-primary");
+		panel.getStyleClass().addAll("b", "panel-primary");
+		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
+		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
 		stage.setTitle(Strings.appLogin);
 		stage.setResizable(false);
@@ -55,7 +56,7 @@ public class LoginApp extends Application {
 
 	private void components() {
 		pane = new AnchorPane();
-		panel = new Panel("Transportadora NewWay");
+		panel = new Panel(Strings.lblTransportadora);
 		pane.setPrefSize(400, 300);
 		txtLogin = new TextField();
 		txtSenha = new PasswordField();
@@ -70,34 +71,30 @@ public class LoginApp extends Application {
 	}
 
 	private void listeners() {
-		btnEntrar.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				if (txtLogin.getText().isEmpty()) {
-					try {
-						new Error(Strings.loginError).start(new Stage());
-
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					return;
-				}
-
-				if (!txtSenha.getText().equals("admin")) {
-					try {
-						new Error(Strings.passwordError).start(new Stage());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					return;
-				}
-
+		btnEntrar.setOnAction(entrar -> {
+			if (txtLogin.getText().isEmpty()) {
 				try {
-					new MenuApp().start(new Stage());
-					LoginApp.stage.close();
-				} catch (Exception e) {
-					e.printStackTrace();
+					new Error(Strings.loginError).start(new Stage());
+				} catch (Exception entrar1) {
+					entrar1.printStackTrace();
 				}
+				return;
+			}
+
+			if (!txtSenha.getText().equals("admin") && !txtSenha.getText().equals("123")) {
+				try {
+					new Error(Strings.passwordError).start(new Stage());
+				} catch (Exception entrar2) {
+					entrar2.printStackTrace();
+				}
+				return;
+			}
+
+			try {
+				new MenuApp().start(new Stage());
+				LoginApp.stage.close();
+			} catch (Exception entrar3) {
+				entrar3.printStackTrace();
 			}
 
 		});

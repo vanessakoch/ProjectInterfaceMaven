@@ -1,7 +1,6 @@
 package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,25 +19,31 @@ public class Error extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		AnchorPane pane = new AnchorPane();
-		Image appIcon = new Image(getClass().getResourceAsStream("erro.png"));
-		stage.getIcons().add(appIcon);
-		Panel panel = new Panel("Erro!");
-		pane.setPrefSize(280, 120);
+		Panel panel = new Panel(Strings.lblErro);
+		pane.setPrefSize(260, 100);
+
 		Scene scene = new Scene(panel);
 		stage.setScene(scene);
+
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().addAll("panel", "panel-danger");
+		panel.getStyleClass().add("panel-primary");
+		Image appIcon = new Image(getClass().getResourceAsStream("erro.png"));
+		stage.getIcons().add(appIcon);
+
 		Label lblMsg = new Label(mensagem);
+		Button btnOk = new Button(Strings.btnOk);
+
 		lblMsg.setLayoutX(50);
 		lblMsg.setLayoutY(35);
-		lblMsg.getStyleClass().add("h4");
-		Button btnOk = new Button(Strings.btnOk);
 		btnOk.setLayoutX(220);
 		btnOk.setLayoutY(30);
+		lblMsg.getStyleClass().add("h4");
 		btnOk.getStyleClass().addAll("btn", "btn-danger");
-		btnOk.setOnMouseClicked(e -> stage.close());
 		pane.getChildren().addAll(lblMsg, btnOk);
 		panel.setBody(pane);
+
+		btnOk.setOnMouseClicked(e -> stage.close());
+
 		stage.show();
 	}
 }

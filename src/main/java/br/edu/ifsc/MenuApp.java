@@ -1,10 +1,7 @@
 package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -22,7 +19,7 @@ public class MenuApp extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Panel panel = new Panel("High quality transport and logistics services");
+		Panel panel = new Panel(Strings.lblSubFrase);
 
 		Menu m1 = new Menu(Strings.menuCadastro);
 		Menu m2 = new Menu(Strings.menuTransporte);
@@ -30,8 +27,9 @@ public class MenuApp extends Application {
 		Menu m4 = new Menu(Strings.menuSaida);
 		Menu m5 = new Menu(Strings.menuRelatorio);
 		Menu m6 = new Menu(Strings.menuMapa);
-		Menu m = new Menu("                  ");
 		Menu m7 = new Menu(Strings.menuExit);
+		Menu m = new Menu("                  ");
+
 		MenuBar menuBar = new MenuBar();
 		menuBar.getMenus().addAll(m1, m2, m3, m4, m5, m6, m, m7);
 
@@ -64,9 +62,9 @@ public class MenuApp extends Application {
 
 		Scene scene = new Scene(panel, 600, 450);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		menuBar.getStyleClass().addAll("btn", "btn-info");
+		menuBar.getStyleClass().addAll("split-menu-btn", "btn-info");
 		panel.setLeft(menuBar);
-		panel.getStyleClass().addAll("panel", "panel-primary");
+		panel.getStyleClass().addAll("b", "panel-primary");
 		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
 		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
@@ -74,28 +72,46 @@ public class MenuApp extends Application {
 		stage.setResizable(false);
 		stage.show();
 		MenuApp.stage = stage;
+
 		sub16.setOnAction(e -> stage.close());
 
-		sub15.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				try {
-					new LoginApp().start(new Stage());
-					MenuApp.stage.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		sub15.setOnAction(login -> {
+			try {
+				new LoginApp().start(new Stage());
+				MenuApp.stage.close();
+			} catch (Exception login1) {
+				login1.printStackTrace();
 			}
-		});
-		sub9.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				try {
-					new CTeApp().start(new Stage());
-					MenuApp.stage.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+
 		});
 
+		sub9.setOnAction(cte -> {
+			try {
+				new CTeApp().start(new Stage());
+				MenuApp.stage.close();
+			} catch (Exception cte1) {
+				cte1.printStackTrace();
+			}
+
+		});
+
+		sub1.setOnAction(cad -> {
+			try {
+				new MotoristaApp().start(new Stage());
+				MenuApp.stage.close();
+			} catch (Exception cad1) {
+				cad1.printStackTrace();
+			}
+
+		});
+		sub2.setOnAction(cad -> {
+			try {
+				new VeiculoApp().start(new Stage());
+				MenuApp.stage.close();
+			} catch (Exception cad1) {
+				cad1.printStackTrace();
+			}
+
+		});
 	}
 }

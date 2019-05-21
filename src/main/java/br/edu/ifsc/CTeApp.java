@@ -3,8 +3,6 @@ package br.edu.ifsc;
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -38,7 +36,7 @@ public class CTeApp extends Application {
 		listeners();
 		Scene scene = new Scene(panel);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().add("panel-primary");
+		panel.getStyleClass().addAll("b","panel-primary");
 		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
 		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
@@ -103,13 +101,13 @@ public class CTeApp extends Application {
 		lblData.setLayoutY(470);
 
 		// buttons
-		btnFinalizar.setLayoutX(30);
-		btnFinalizar.setLayoutY(550);
+		btnFinalizar.setLayoutX(35);
+		btnFinalizar.setLayoutY(545);
 		btnFinalizar.setMaxWidth(100);
 		btnFinalizar.setMinWidth(100);
-		btnImprimir.setLayoutX(150);
+		btnImprimir.setLayoutX(140);
 		btnImprimir.setLayoutY(550);
-		btnVisualizar.setLayoutX(250);
+		btnVisualizar.setLayoutX(240);
 		btnVisualizar.setLayoutY(550);
 		btnPesquisar.setLayoutX(665);
 		btnPesquisar.setLayoutY(30);
@@ -119,6 +117,7 @@ public class CTeApp extends Application {
 		btnVoltar.setLayoutY(30);
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
+		btnFinalizar.getStyleClass().addAll("btn", "btn-danger");
 
 		// txtFields
 		txtChave.setLayoutX(180);
@@ -247,7 +246,7 @@ public class CTeApp extends Application {
 		dtVencimento = new DatePicker();
 		dtSaida = new DatePicker();
 
-		panel = new Panel("Transportadora NewWay");
+		panel = new Panel(Strings.lblTransportadora);
 
 		pane.getChildren().addAll(lblCte, lblEmitente, lblRemetente, lblDestinario, lblChave, lblCidadeE, lblCnpjE,
 				lblCidadeR, lblCnpjR, lblCidadeD, lblCnpjD, lblCfop, lblProduto, lblPeso, lblValorCarga, lblSeguro,
@@ -260,18 +259,24 @@ public class CTeApp extends Application {
 	}
 
 	private void listeners() {
-		btnVoltar.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				try {
-					new MenuApp().start(new Stage());
-					CTeApp.stage.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		btnVoltar.setOnAction(volta -> {
+			try {
+				new MenuApp().start(new Stage());
+				CTeApp.stage.close();
+			} catch (Exception volta1) {
+				volta1.printStackTrace();
+			}
+
+		});
+
+		btnFinalizar.setOnMouseClicked(finaliza -> {
+			try {
+				new Finalizar().start(new Stage());
+			} catch (Exception finaliza1) {
+				finaliza1.printStackTrace();
 			}
 		});
-		
+
 	}
 
-	
 }

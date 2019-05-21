@@ -1,6 +1,8 @@
 package br.edu.ifsc;
 
+
 public class Strings {
+	public static final String lblTransportadora = "Transportadora NewWay";
 	public static final String btnEntrar = "Entrar";
 	public static final String menuExit = "Sair";
 	public static final String btnOk = "OK";
@@ -8,6 +10,9 @@ public class Strings {
 	public static final String txtSenha = "Digite sua senha...";
 	public static final String lblLogin = "Área de Acesso";
 	public static final String appLogin = "Login - New Way";
+	public static final String appFinalizar = "Concluir";
+	public static final String appMotorista = "Motorista";
+	public static final String appVeiculo = "Veiculo";
 	public static final String appMenu = "Menu - New Way";
 	public static final String appConhecimento = "Conhecimento de Transporte";
 	public static final String menuCadastro = "Cadastros";
@@ -68,6 +73,22 @@ public class Strings {
 	public static final String btnVisualizar = "Visualizar CTe";
 	public static final String btnImprimir = "Imprimir CTe";
 	public static final String btnVoltar = "Voltar";
+	public static final String lblCerto = "Tudo certo!";
+	public static final String lblConcluir = "Concluído com sucesso!";
 	public static final String loginError = "Digite o usuário!";
 	public static final String passwordError = "Digite a senha!";
+	public static final String lblCadastro = "CADASTRO";
+	public static final String lblNome = "Nome Completo";
+	public static final String lblEndereco = "Endereço";
+	public static final String lblCnh = "Carteira de Motorista";
+	public static final String lblCidade = "Município";
+	public static final String lblValidade = "Data de Validade";
+	public static final String lblNascimento = "Data de Nascimento";
+	public static final String lblPlaca = "Placa do Veículo";	
+	public static final String lblMotorista = "Motorista";
+	public static final String lblMarca = "Marca";
+	public static final String lblModelo = "Modelo";
+	public static final String lblAno = "Data de Fabricação";
+	public static final String lblErro = "Erro";
+	public static final String lblSubFrase = "High quality transport and logistics services";
 }
