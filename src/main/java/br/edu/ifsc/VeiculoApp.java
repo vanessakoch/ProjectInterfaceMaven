@@ -1,6 +1,7 @@
 package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
+import br.edu.ifsc.strings.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class VeiculoApp extends Application {
+public class VeiculoApp extends Application implements ControlaApp{
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtMotorista, txtMarca, txtModelo, txtPlaca, txtSeguro, txtApolice;
@@ -37,11 +38,13 @@ public class VeiculoApp extends Application {
 		stage.setTitle(Strings.appVeiculo);
 		stage.setResizable(false);
 		stage.show();
-		layout();
 		VeiculoApp.stage = stage;
-	}
+		layout();
 
-	private void layout() {
+	}
+	
+	@Override
+	public void layout() {
 		lblCadastro.setLayoutX((pane.getWidth() - lblCadastro.getWidth()) / 2);
 		lblCadastro.setLayoutY(10);
 		lblMotorista.setLayoutX(60);
@@ -86,7 +89,7 @@ public class VeiculoApp extends Application {
 
 	}
 
-	private void components() {
+	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblTransportadora);
 		pane.setPrefSize(800, 400);
@@ -115,7 +118,7 @@ public class VeiculoApp extends Application {
 		panel.setBody(pane);
 	}
 
-	private void listeners() {
+	public void listeners() {
 		btnVoltar.setOnAction(volta -> {
 			try {
 				new MenuApp().start(new Stage());
@@ -128,7 +131,7 @@ public class VeiculoApp extends Application {
 
 		btnOk.setOnMouseClicked(ok -> {
 			try {
-				new Finalizar().start(new Stage());
+				new FinalizarApp().start(new Stage());
 			} catch (Exception ok1) {
 				ok1.printStackTrace();
 			}

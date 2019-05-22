@@ -1,5 +1,4 @@
-package br.edu.ifsc;
-
+package br.edu.ifsc.strings;
 
 public class Strings {
 	public static final String lblTransportadora = "Transportadora NewWay";
@@ -9,11 +8,13 @@ public class Strings {
 	public static final String txtLogin = "Digite seu login...";
 	public static final String txtSenha = "Digite sua senha...";
 	public static final String lblLogin = "Área de Acesso";
+	public static final String senhaIncorreta = "Senha incorreta!";
 	public static final String appLogin = "Login - New Way";
 	public static final String appFinalizar = "Concluir";
 	public static final String appMotorista = "Motorista";
 	public static final String appVeiculo = "Veiculo";
 	public static final String appMenu = "Menu - New Way";
+	public static final String appGerenciaCte = "Gerenciar CTe - New Way";
 	public static final String appConhecimento = "Conhecimento de Transporte";
 	public static final String menuCadastro = "Cadastros";
 	public static final String menuFrete = "Fretes";
@@ -65,6 +66,8 @@ public class Strings {
 	public static final String lblFrete = "Valor/Frete";
 	public static final String lblPedagio = "Pedagio";
 	public static final String lblCiot = "CIOT";
+	public static final String situacao = "Situação";
+	public static final String valorNota = "Valor da Nota";
 	public static final String lblTotalReceber = "Total a Receber";
 	public static final String lblTotalFrete = "Total de Frete";
 	public static final String btnFinalizar = "Finalizar";
@@ -75,8 +78,8 @@ public class Strings {
 	public static final String btnVoltar = "Voltar";
 	public static final String lblCerto = "Tudo certo!";
 	public static final String lblConcluir = "Concluído com sucesso!";
-	public static final String loginError = "Digite o usuário!";
-	public static final String passwordError = "Digite a senha!";
+	public static final String semLogin = "Digite o usuário!";
+	public static final String semSenha = "Digite a senha!";
 	public static final String lblCadastro = "CADASTRO";
 	public static final String lblNome = "Nome Completo";
 	public static final String lblEndereco = "Endereço";
@@ -84,7 +87,7 @@ public class Strings {
 	public static final String lblCidade = "Município";
 	public static final String lblValidade = "Data de Validade";
 	public static final String lblNascimento = "Data de Nascimento";
-	public static final String lblPlaca = "Placa do Veículo";	
+	public static final String lblPlaca = "Placa do Veículo";
 	public static final String lblMotorista = "Motorista";
 	public static final String lblMarca = "Marca";
 	public static final String lblModelo = "Modelo";

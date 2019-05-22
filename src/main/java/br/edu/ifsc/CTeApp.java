@@ -1,7 +1,7 @@
 package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
+import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class CTeApp extends Application {
+public class CTeApp extends Application implements ControlaApp{
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -36,18 +36,19 @@ public class CTeApp extends Application {
 		listeners();
 		Scene scene = new Scene(panel);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().addAll("b","panel-primary");
+		panel.getStyleClass().addAll("b", "panel-primary");
 		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
 		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
 		stage.setTitle(Strings.appConhecimento);
 		stage.setResizable(false);
 		stage.show();
-		layout();
 		CTeApp.stage = stage;
+		layout();
+
 	}
 
-	private void layout() {
+	public void layout() {
 		// labels
 		lblChave.setLayoutX(355);
 		lblChave.setLayoutY(50);
@@ -180,7 +181,7 @@ public class CTeApp extends Application {
 
 	}
 
-	private void components() {
+	public void components() {
 		pane = new AnchorPane();
 		pane.setPrefSize(800, 600);
 		lblCte = new Label(Strings.lblCte);
@@ -258,7 +259,7 @@ public class CTeApp extends Application {
 		panel.setBody(pane);
 	}
 
-	private void listeners() {
+	public void listeners() {
 		btnVoltar.setOnAction(volta -> {
 			try {
 				new MenuApp().start(new Stage());
@@ -271,12 +272,21 @@ public class CTeApp extends Application {
 
 		btnFinalizar.setOnMouseClicked(finaliza -> {
 			try {
-				new Finalizar().start(new Stage());
+				new FinalizarApp().start(new Stage());
 			} catch (Exception finaliza1) {
 				finaliza1.printStackTrace();
 			}
 		});
 
+		btnPesquisar.setOnMouseClicked(pesquisa -> {
+			try {
+				new GerenciaCteApp().start(new Stage());
+				CTeApp.stage.close();
+			} catch (Exception pesquisa1) {
+				pesquisa1.printStackTrace();
+			}
+
+		});
 	}
 
 }

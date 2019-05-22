@@ -1,6 +1,8 @@
 package br.edu.ifsc;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
+
+import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MotoristaApp extends Application {
+public class MotoristaApp extends Application implements ControlaApp{
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtNome, txtEndereco, txtCnh, txtCidade, txtPlaca;
@@ -37,11 +39,12 @@ public class MotoristaApp extends Application {
 		stage.setTitle(Strings.appMotorista);
 		stage.setResizable(false);
 		stage.show();
-		layout();
 		MotoristaApp.stage = stage;
+		layout();
+
 	}
 
-	private void layout() {
+	public void layout() {
 		lblCadastro.setLayoutX((pane.getWidth() - lblCadastro.getWidth()) / 2);
 		lblCadastro.setLayoutY(10);
 		lblNome.setLayoutX(60);
@@ -85,7 +88,7 @@ public class MotoristaApp extends Application {
 
 	}
 
-	private void components() {
+	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblTransportadora);
 		pane.setPrefSize(800, 400);
@@ -106,6 +109,7 @@ public class MotoristaApp extends Application {
 		btnVoltar = new Button(Strings.btnVoltar);
 		dtValidade = new DatePicker();
 		dtNascimento = new DatePicker();
+
 		lblCadastro.getStyleClass().setAll("strong");
 		btnOk.getStyleClass().setAll("btn", "btn-primary");
 		pane.getChildren().addAll(lblCadastro, lblNome, lblEndereco, lblCnh, lblCidade, lblValidade, lblNascimento,
@@ -114,7 +118,7 @@ public class MotoristaApp extends Application {
 		panel.setBody(pane);
 	}
 
-	private void listeners() {
+	public void listeners() {
 		btnVoltar.setOnAction(volta -> {
 			try {
 				new MenuApp().start(new Stage());
@@ -127,7 +131,7 @@ public class MotoristaApp extends Application {
 
 		btnOk.setOnMouseClicked(ok -> {
 			try {
-				new Finalizar().start(new Stage());
+				new FinalizarApp().start(new Stage());
 			} catch (Exception ok1) {
 				ok1.printStackTrace();
 			}

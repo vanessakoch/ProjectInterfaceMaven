@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>br.edu.ifsc</groupId>
-  <artifactId>TransportProject</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>TransportProject</name>
-  <description>		</description>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.edu.ifsc</groupId>
+	<artifactId>TransportProject</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TransportProject</name>
+	<description>		</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -14,26 +16,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jfxtras</groupId>
-			<artifactId>jmetro</artifactId>
-			<version>5.3</version>
+			<groupId>org.kordamp.bootstrapfx</groupId>
+			<artifactId>bootstrapfx-core</artifactId>
+			<version>0.2.4</version>
 		</dependency>
 
-    <dependency>
-        <groupId>org.kordamp.bootstrapfx</groupId>
-        <artifactId>bootstrapfx-core</artifactId>
-        <version>0.2.4</version>
-    </dependency>
-</dependencies>
-
-<repositories>
-    <repository>
-        <id>central</id>
-        <name>jcenter</name>
-        <url>http://jcenter.bintray.com</url>
-    </repository>
-</repositories>
-
+	</dependencies>
 
 	<build>
 		<plugins>
