@@ -1,25 +1,29 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-import br.edu.ifsc.docs.*;
-import br.edu.ifsc.strings.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXButton.ButtonType;
+import com.jfoenix.controls.JFXDecorator;
+import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.strings.Strings;
+import br.edu.ifsc.util.GerenciaCte;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class GerenciaCteApp extends Application implements ControlaApp {
+public class GerenciaCteApp extends Application implements ControllerApp {
+	
 	private TableView<GerenciaCte> table;
 	private TableColumn<GerenciaCte, String> id;
 	private TableColumn<GerenciaCte, String> data;
 	private TableColumn<GerenciaCte, String> remetente;
 	private TableColumn<GerenciaCte, String> situacao;
 	private TableColumn<GerenciaCte, String> valorNota;
-	private Button btnVoltar;
+	private JFXButton btnVoltar;
 	private Panel panel;
+	private JFXDecorator decorator;
 	private static Stage stage;
 
 	public static void main(String args[]) {
@@ -30,14 +34,12 @@ public class GerenciaCteApp extends Application implements ControlaApp {
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel, 1000, 500);
+		decorator = new JFXDecorator(stage, panel);
+		decorator.setCustomMaximize(true);
+		Scene scene = new Scene(decorator, 1000, 550);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().add("panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
-		stage.setTitle(Strings.appGerenciaCte);
-		stage.setResizable(true);
 		stage.show();
 		GerenciaCteApp.stage = stage;
 		layout();
@@ -72,8 +74,10 @@ public class GerenciaCteApp extends Application implements ControlaApp {
 		table.getColumns().add(situacao);
 		table.getColumns().add(valorNota);
 
-		btnVoltar = new Button(Strings.btnVoltar);
-		btnVoltar.getStyleClass().addAll("btn", "btn-danger");
+		btnVoltar = new JFXButton(Strings.btnVoltar);
+		btnVoltar.setButtonType(ButtonType.RAISED);
+		btnVoltar.setStyle("-fx-background-color: #3949AB");
+		btnVoltar.setPrefSize(90, 40);
 		panel.setBody(table);
 		panel.setHeading(btnVoltar);
 	}

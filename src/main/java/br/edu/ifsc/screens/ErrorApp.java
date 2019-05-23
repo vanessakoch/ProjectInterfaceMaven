@@ -1,22 +1,30 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.controls.JFXButton.ButtonType;
+
+import br.edu.ifsc.controller.ControllerApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ErrorApp extends Application implements ControlaApp{
+public class ErrorApp extends Application implements ControllerApp {
+	
 	private Panel panel;
 	private AnchorPane pane;
 	private String mensagem;
 	private Label lblMsg;
-	private Button btnOk;
+	private JFXButton btnOk;
 	private static Stage stage;
+	private JFXDecorator decorator;
 
 	public ErrorApp(String mensagem) {
 		this.mensagem = mensagem;
@@ -26,10 +34,10 @@ public class ErrorApp extends Application implements ControlaApp{
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel);
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 300, 180);
 		stage.setScene(scene);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		stage.setResizable(false);
 		stage.show();
 		ErrorApp.stage = stage;
 		layout();
@@ -37,26 +45,28 @@ public class ErrorApp extends Application implements ControlaApp{
 	}
 
 	public void layout() {
-		lblMsg.setLayoutX(30);
-		lblMsg.setLayoutY(35);
-		btnOk.setLayoutX(200);
-		btnOk.setLayoutY(30);
-		lblMsg.getStyleClass().add("h4");
-		btnOk.getStyleClass().addAll("btn", "btn-danger");
+		lblMsg.setLayoutX(25);
+		lblMsg.setLayoutY(20);
+		btnOk.setLayoutX(165);
+		btnOk.setLayoutY(10);
 		panel.getStyleClass().add("panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("erro.png"));
-		stage.getIcons().add(appIcon);
+		lblMsg.getStyleClass().add("b");
+		lblMsg.setFont(Font.font(13));
+		lblMsg.setTextFill(Color.RED);
 	}
 
 	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblErro);
-		pane.setPrefSize(280, 100);
-		lblMsg = new Label(mensagem);
-		btnOk = new Button(Strings.btnOk);
+		lblMsg = new Label(mensagem.toUpperCase());
+		btnOk = new JFXButton(Strings.btnOk);
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.RED);
+		btnOk.setPrefSize(80, 40);
 		pane.getChildren().addAll(lblMsg, btnOk);
 		panel.setBody(pane);
-		
+
 	}
 
 	public void listeners() {

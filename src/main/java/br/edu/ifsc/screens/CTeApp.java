@@ -1,6 +1,12 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.controls.JFXButton.ButtonType;
+
+import br.edu.ifsc.controller.ControllerApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,23 +14,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CTeApp extends Application implements ControlaApp{
+public class CTeApp extends Application implements ControllerApp {
 
 	private AnchorPane pane;
 	private Panel panel;
 	private Label lblCte, lblEmitente, lblDestinario, lblRemetente, lblChave, lblCidadeE, lblCnpjE, lblCidadeR,
 			lblCnpjR, lblCidadeD, lblCnpjD, lblCfop, lblProduto, lblPeso, lblSaida, lblVencimento, lblData,
 			lblValorCarga, lblSeguro, lblApolice, lblFrete, lblPedagio, lblCiot, lblTotalReceber, lblTotalFrete;
-	private Button btnFinalizar, btnPesquisar, btnXml, btnVisualizar, btnImprimir, btnVoltar;
+	private Button btnPesquisar, btnXml, btnVisualizar, btnImprimir, btnVoltar;
+	private JFXButton btnFinalizar;
 	private TextField txtCte, txtEmissor, txtRemetente, txtDestinario, txtChave, txtCidadeE, txtCnpjE, txtCidadeR,
 			txtCnpjR, txtCidadeD, txtCnpjD, txtCfop, txtProduto, txtPeso, txtValorCarga, txtSeguro, txtApolice,
 			txtFrete, txtPedagio, txtCiot, txtTotalReceber, txtTotalFrete;
 	private DatePicker dtData, dtSaida, dtVencimento;
 	private static Stage stage;
+	private JFXDecorator decorator;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -34,14 +42,11 @@ public class CTeApp extends Application implements ControlaApp{
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel);
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 850, 700);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().addAll("b", "panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
-		stage.setTitle(Strings.appConhecimento);
-		stage.setResizable(false);
 		stage.show();
 		CTeApp.stage = stage;
 		layout();
@@ -103,22 +108,21 @@ public class CTeApp extends Application implements ControlaApp{
 
 		// buttons
 		btnFinalizar.setLayoutX(35);
-		btnFinalizar.setLayoutY(545);
+		btnFinalizar.setLayoutY(535);
 		btnFinalizar.setMaxWidth(100);
 		btnFinalizar.setMinWidth(100);
-		btnImprimir.setLayoutX(140);
+		btnImprimir.setLayoutX(155);
 		btnImprimir.setLayoutY(550);
-		btnVisualizar.setLayoutX(240);
+		btnVisualizar.setLayoutX(260);
 		btnVisualizar.setLayoutY(550);
 		btnPesquisar.setLayoutX(665);
 		btnPesquisar.setLayoutY(30);
 		btnXml.setLayoutY(70);
-		btnXml.setLayoutX(665);
+		btnXml.setLayoutX(670);
 		btnVoltar.setLayoutX(30);
 		btnVoltar.setLayoutY(30);
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
-		btnFinalizar.getStyleClass().addAll("btn", "btn-danger");
 
 		// txtFields
 		txtChave.setLayoutX(180);
@@ -156,13 +160,13 @@ public class CTeApp extends Application implements ControlaApp{
 		txtPeso.setLayoutY(275);
 		txtApolice.setLayoutX(355);
 		txtApolice.setLayoutY(305);
-		txtCnpjE.setLayoutX(610);
+		txtCnpjE.setLayoutX(620);
 		txtCnpjE.setLayoutY(135);
-		txtCnpjR.setLayoutX(610);
+		txtCnpjR.setLayoutX(620);
 		txtCnpjR.setLayoutY(165);
-		txtCnpjD.setLayoutX(610);
+		txtCnpjD.setLayoutX(620);
 		txtCnpjD.setLayoutY(195);
-		txtValorCarga.setLayoutX(610);
+		txtValorCarga.setLayoutX(620);
 		txtValorCarga.setLayoutY(275);
 		txtTotalFrete.setLayoutX(350);
 		txtTotalFrete.setLayoutY(420);
@@ -183,7 +187,6 @@ public class CTeApp extends Application implements ControlaApp{
 
 	public void components() {
 		pane = new AnchorPane();
-		pane.setPrefSize(800, 600);
 		lblCte = new Label(Strings.lblCte);
 		lblEmitente = new Label(Strings.lblEmitente);
 		lblRemetente = new Label(Strings.lblRemetente);
@@ -211,12 +214,16 @@ public class CTeApp extends Application implements ControlaApp{
 		lblData = new Label(Strings.lblData);
 
 		// btn
-		btnFinalizar = new Button(Strings.btnFinalizar);
 		btnPesquisar = new Button(Strings.btnPesquisar);
 		btnXml = new Button(Strings.btnXml);
 		btnVisualizar = new Button(Strings.btnVisualizar);
 		btnImprimir = new Button(Strings.btnImprimir);
 		btnVoltar = new Button(Strings.btnVoltar);
+		btnFinalizar = new JFXButton(Strings.btnFinalizar);
+		btnFinalizar.setButtonType(ButtonType.RAISED);
+		btnFinalizar.setStyle("-fx-background-color: #FAFAFA");
+		btnFinalizar.setTextFill(Color.BLUE);
+		btnFinalizar.setPrefSize(90, 45);
 
 		// txtFields
 		txtCte = new TextField();

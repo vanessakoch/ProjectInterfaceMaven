@@ -1,7 +1,10 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXButton.ButtonType;
+import br.edu.ifsc.controller.ControllerApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,18 +12,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class MotoristaApp extends Application implements ControlaApp{
+public class MotoristaApp extends Application implements ControllerApp {
+	
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtNome, txtEndereco, txtCnh, txtCidade, txtPlaca;
-	private Button btnOk, btnVoltar;
+	private Button btnVoltar;
+	private JFXButton btnOk;
 	private Label lblCadastro, lblNome, lblEndereco, lblCnh, lblCidade, lblValidade, lblNascimento, lblPlaca;
 	private DatePicker dtValidade, dtNascimento;
 	private static Stage stage;
+	private JFXDecorator decorator;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -30,14 +36,11 @@ public class MotoristaApp extends Application implements ControlaApp{
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel);
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 830, 500);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().addAll("b", "panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
-		stage.setTitle(Strings.appMotorista);
-		stage.setResizable(false);
 		stage.show();
 		MotoristaApp.stage = stage;
 		layout();
@@ -85,13 +88,12 @@ public class MotoristaApp extends Application implements ControlaApp{
 		dtValidade.setLayoutY(255);
 		dtNascimento.setLayoutX(530);
 		dtNascimento.setLayoutY(255);
-
+		decorator.setCustomMaximize(true);
 	}
 
 	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblTransportadora);
-		pane.setPrefSize(800, 400);
 		txtNome = new TextField();
 		txtEndereco = new TextField();
 		txtCnh = new TextField();
@@ -105,13 +107,17 @@ public class MotoristaApp extends Application implements ControlaApp{
 		lblValidade = new Label(Strings.lblValidade);
 		lblNascimento = new Label(Strings.lblNascimento);
 		lblPlaca = new Label(Strings.lblPlaca);
-		btnOk = new Button(Strings.btnOk);
+		btnOk = new JFXButton(Strings.btnOk);
 		btnVoltar = new Button(Strings.btnVoltar);
 		dtValidade = new DatePicker();
 		dtNascimento = new DatePicker();
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.BLUE);
+		btnOk.setPrefSize(90, 40);
+		panel.setBody(pane);
 
 		lblCadastro.getStyleClass().setAll("strong");
-		btnOk.getStyleClass().setAll("btn", "btn-primary");
 		pane.getChildren().addAll(lblCadastro, lblNome, lblEndereco, lblCnh, lblCidade, lblValidade, lblNascimento,
 				lblPlaca, btnOk, btnVoltar, txtNome, txtEndereco, txtCnh, txtCidade, txtPlaca, dtValidade,
 				dtNascimento);

@@ -9,13 +9,7 @@ public class Strings {
 	public static final String txtSenha = "Digite sua senha...";
 	public static final String lblLogin = "Área de Acesso";
 	public static final String senhaIncorreta = "Senha incorreta!";
-	public static final String appLogin = "Login - New Way";
-	public static final String appFinalizar = "Concluir";
-	public static final String appMotorista = "Motorista";
-	public static final String appVeiculo = "Veiculo";
-	public static final String appMenu = "Menu - New Way";
-	public static final String appGerenciaCte = "Gerenciar CTe - New Way";
-	public static final String appConhecimento = "Conhecimento de Transporte";
+	public static final String espaco = "                                                               ";
 	public static final String menuCadastro = "Cadastros";
 	public static final String menuFrete = "Fretes";
 	public static final String menuTransporte = "Transportes";

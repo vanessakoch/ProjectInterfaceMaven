@@ -1,4 +1,4 @@
-package br.edu.ifsc.docs;
+package br.edu.ifsc.util;
 
 public class GerenciaCte {
 	private String id;

@@ -1,25 +1,32 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXButton.ButtonType;
+import com.jfoenix.controls.JFXDecorator;
+
+import br.edu.ifsc.controller.ControllerApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class LoginApp extends Application implements ControlaApp{
+public class LoginApp extends Application implements ControllerApp {
 
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtLogin;
 	private PasswordField txtSenha;
-	private Button btnEntrar;
+	private JFXButton btnEntrar;
 	private Label lblLogin;
+	private JFXDecorator decorator;
 	private static Stage stage;
 
 	public static void main(String[] args) {
@@ -30,12 +37,12 @@ public class LoginApp extends Application implements ControlaApp{
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel);
+
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 500, 400);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().addAll("b", "panel-primary");
 		stage.setScene(scene);
-		stage.setTitle(Strings.appLogin);
-		stage.setResizable(true);
 		stage.show();
 		LoginApp.stage = stage;
 		layout();
@@ -44,29 +51,30 @@ public class LoginApp extends Application implements ControlaApp{
 
 	public void layout() {
 		lblLogin.setLayoutX((pane.getWidth() - lblLogin.getWidth()) / 2);
-		lblLogin.setLayoutY(40);
+		lblLogin.setLayoutY(30);
 		txtLogin.setLayoutX((pane.getWidth() - txtLogin.getWidth()) / 2);
-		txtLogin.setLayoutY(100);
+		txtLogin.setLayoutY(90);
 		txtSenha.setLayoutX((pane.getWidth() - txtSenha.getWidth()) / 2);
-		txtSenha.setLayoutY(140);
+		txtSenha.setLayoutY(130);
 		btnEntrar.setLayoutX((pane.getWidth() - btnEntrar.getWidth()) / 2);
-		btnEntrar.setLayoutY(180);
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
+		btnEntrar.setLayoutY(190);
+
 	}
 
 	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblTransportadora);
-		panel.setPrefSize(500, 400);
 		txtLogin = new TextField();
 		txtSenha = new PasswordField();
 		lblLogin = new Label(Strings.lblLogin);
 		txtLogin.setPromptText(Strings.txtLogin);
 		txtSenha.setPromptText(Strings.txtSenha);
-		btnEntrar = new Button(Strings.btnEntrar);
-		lblLogin.getStyleClass().setAll("strong");
-		btnEntrar.getStyleClass().setAll("btn", "btn-danger");
+		btnEntrar = new JFXButton(Strings.btnEntrar);
+		lblLogin.setFont(Font.font(14));
+		btnEntrar.setButtonType(ButtonType.RAISED);
+		btnEntrar.setStyle("-fx-background-color: #B71C1C");
+		btnEntrar.setTextFill(Color.WHITE);
+		btnEntrar.setPrefSize(100, 40);
 		pane.getChildren().addAll(lblLogin, txtLogin, txtSenha, btnEntrar);
 		panel.setBody(pane);
 	}
@@ -81,7 +89,7 @@ public class LoginApp extends Application implements ControlaApp{
 				}
 				return;
 			}
-			
+
 			if (txtSenha.getText().isEmpty()) {
 				try {
 					new ErrorApp(Strings.semSenha).start(new Stage());
@@ -99,7 +107,6 @@ public class LoginApp extends Application implements ControlaApp{
 				}
 				return;
 			}
-
 
 			try {
 				new MenuApp().start(new Stage());

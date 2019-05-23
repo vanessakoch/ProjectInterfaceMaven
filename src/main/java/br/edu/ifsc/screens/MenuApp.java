@@ -1,23 +1,25 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
+import com.jfoenix.controls.JFXDecorator;
+import br.edu.ifsc.controller.ControllerApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class MenuApp extends Application implements ControlaApp {
+public class MenuApp extends Application implements ControllerApp {
+	
 	private MenuItem sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11, sub12, sub13, sub14, sub15,
 			sub16, sub17, sub18, sub19, sub20;
 	private MenuBar menuBar;
 	private Menu m, m1, m2, m3, m4, m5, m6, m7;
 	private Panel panel;
 	private static Stage stage;
+	private JFXDecorator decorator;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -29,22 +31,19 @@ public class MenuApp extends Application implements ControlaApp {
 		listeners();
 		panel = new Panel(Strings.lblSubFrase);
 		panel.setLeft(menuBar);
-		Scene scene = new Scene(panel, 600, 450);
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 800, 550);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		stage.setScene(scene);
-		stage.setTitle(Strings.appMenu);
-		stage.setResizable(true);
 		stage.show();
 		MenuApp.stage = stage;
 		layout();
 
-
 	}
 
 	public void layout() {
-		panel.getStyleClass().addAll("panel","panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
+		panel.getStyleClass().addAll("panel", "panel-primary");
+		decorator.setCustomMaximize(true);
 
 	}
 
@@ -56,7 +55,7 @@ public class MenuApp extends Application implements ControlaApp {
 		m5 = new Menu(Strings.menuRelatorio);
 		m6 = new Menu(Strings.menuMapa);
 		m7 = new Menu(Strings.menuExit);
-		m = new Menu("                  ");
+		m = new Menu(Strings.espaco);
 
 		menuBar = new MenuBar();
 		menuBar.getMenus().addAll(m1, m2, m3, m4, m5, m6, m, m7);

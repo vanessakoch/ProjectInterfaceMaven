@@ -1,25 +1,32 @@
-package br.edu.ifsc;
+package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-import br.edu.ifsc.strings.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXButton.ButtonType;
+import com.jfoenix.controls.JFXDecorator;
+import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VeiculoApp extends Application implements ControlaApp{
+public class VeiculoApp extends Application implements ControllerApp {
+	
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtMotorista, txtMarca, txtModelo, txtPlaca, txtSeguro, txtApolice;
-	private Button btnOk, btnVoltar;
+	private Button btnVoltar;
 	private Label lblCadastro, lblMotorista, lblMarca, lblAno, lblModelo, lblPlaca, lblSeguro, lblApolice;
 	private DatePicker dtFabricacao;
 	private static Stage stage;
+	private JFXButton btnOk;
+	private JFXDecorator decorator;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -29,20 +36,19 @@ public class VeiculoApp extends Application implements ControlaApp{
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-		Scene scene = new Scene(panel);
+
+		decorator = new JFXDecorator(stage, panel, false, false, true);
+		Scene scene = new Scene(decorator, 800, 500);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().add("panel-primary");
-		Image appIcon = new Image(getClass().getResourceAsStream("truck.png"));
-		stage.getIcons().add(appIcon);
 		stage.setScene(scene);
-		stage.setTitle(Strings.appVeiculo);
 		stage.setResizable(false);
 		stage.show();
 		VeiculoApp.stage = stage;
 		layout();
 
 	}
-	
+
 	@Override
 	public void layout() {
 		lblCadastro.setLayoutX((pane.getWidth() - lblCadastro.getWidth()) / 2);
@@ -92,7 +98,6 @@ public class VeiculoApp extends Application implements ControlaApp{
 	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel(Strings.lblTransportadora);
-		pane.setPrefSize(800, 400);
 		txtMotorista = new TextField();
 		txtMarca = new TextField();
 		txtSeguro = new TextField();
@@ -107,18 +112,24 @@ public class VeiculoApp extends Application implements ControlaApp{
 		lblSeguro = new Label(Strings.lblSeguro);
 		lblApolice = new Label(Strings.lblApolice);
 		lblPlaca = new Label(Strings.lblPlaca);
-		btnOk = new Button(Strings.btnOk);
 		btnVoltar = new Button(Strings.btnVoltar);
 		dtFabricacao = new DatePicker();
 		lblCadastro.getStyleClass().setAll("strong");
-		btnOk.getStyleClass().setAll("btn", "btn-primary");
+		btnOk = new JFXButton(Strings.btnOk);
+
 		pane.getChildren().addAll(lblCadastro, lblMotorista, lblMarca, lblAno, lblModelo, txtSeguro, txtApolice,
 				lblSeguro, lblApolice, lblPlaca, btnOk, btnVoltar, txtMotorista, txtMarca, txtModelo, txtPlaca,
 				dtFabricacao);
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.BLUE);
+		btnOk.setPrefSize(90, 40);
 		panel.setBody(pane);
+
 	}
 
 	public void listeners() {
+
 		btnVoltar.setOnAction(volta -> {
 			try {
 				new MenuApp().start(new Stage());
