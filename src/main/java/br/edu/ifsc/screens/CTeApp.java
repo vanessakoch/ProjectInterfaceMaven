@@ -303,7 +303,7 @@ public class CTeApp extends Application implements Function {
 
 		btnFinalizar.setOnMouseClicked(finaliza -> {
 			try {
-				new FinalizarApp().start(new Stage());
+				new FinalizaCteApp().start(new Stage());
 			} catch (Exception finaliza1) {
 				finaliza1.printStackTrace();
 			}

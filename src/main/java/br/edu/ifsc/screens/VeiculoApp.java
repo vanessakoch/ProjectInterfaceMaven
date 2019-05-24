@@ -146,7 +146,7 @@ public class VeiculoApp extends Application implements Function {
 
 		btnOk.setOnMouseClicked(ok -> {
 			try {
-				new FinalizarApp().start(new Stage());
+				new FinalizaMdfeApp().start(new Stage());
 			} catch (Exception ok1) {
 				ok1.printStackTrace();
 			}

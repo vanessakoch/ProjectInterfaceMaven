@@ -72,6 +72,7 @@ public class Strings {
 	public static final String btnVoltar = "Voltar";
 	public static final String lblCerto = "Tudo certo!";
 	public static final String lblConcluir = "CONCLUÍDO COM SUCESSO";
+	public static final String lblFinalizaMdfe = "MDFE FINALIZADO COM SUCESSO";
 	public static final String semLogin = "Digite o usuário!";
 	public static final String semSenha = "Digite a senha!";
 	public static final String lblCadV = "CADASTRO DE VEÍCULOS";
@@ -102,4 +103,5 @@ public class Strings {
 	public static final String btnVisMdf = "Visualizar MDFe";
 	public static final String btnImpMdf = "Imprimir MDFe";
 	public static final String lblConhecimento = "CONHECIMENTO DE TRANSPORTE - CTe";
+	public static final String lblFinalizaCte = "CTE FINALIZADO COM SUCESSO";
 }

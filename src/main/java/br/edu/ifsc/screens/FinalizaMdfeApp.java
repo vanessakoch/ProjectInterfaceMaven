@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class FinalizarApp extends Application implements Function {
+public class FinalizaMdfeApp extends Application implements Function {
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -39,13 +39,13 @@ public class FinalizarApp extends Application implements Function {
 		panel.getStyleClass().addAll("b", "panel-primary");
 		stage.setScene(scene);
 		stage.show();
-		FinalizarApp.stage = stage;
+		FinalizaMdfeApp.stage = stage;
 		layout();
 
 	}
 
 	public void layout() {
-		lblConcluir.setLayoutX(25);
+		lblConcluir.setLayoutX(20);
 		lblConcluir.setLayoutY(10);
 		lblConcluir.setFont(Font.font(12));
 		lblConcluir.setStyle("-fx-text-fill: #1A237E;");
@@ -60,7 +60,7 @@ public class FinalizarApp extends Application implements Function {
 	public void components() {
 		pane = new AnchorPane();
 		panel = new Panel();
-		lblConcluir = new Label(Strings.lblConcluir);
+		lblConcluir = new Label(Strings.lblFinalizaMdfe);
 		btnOk = new JFXButton(Strings.btnOk);
 		pane.getChildren().addAll(lblConcluir, btnOk);
 		panel.setBody(pane);
