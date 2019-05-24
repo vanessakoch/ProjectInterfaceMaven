@@ -1,12 +1,10 @@
 package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton.ButtonType;
-
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,8 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ErrorApp extends Application implements ControllerApp {
-	
+public class ErrorApp extends Application implements FunctionApp {
+
 	private Panel panel;
 	private AnchorPane pane;
 	private String mensagem;
@@ -53,6 +51,10 @@ public class ErrorApp extends Application implements ControllerApp {
 		lblMsg.getStyleClass().add("b");
 		lblMsg.setFont(Font.font(13));
 		lblMsg.setTextFill(Color.RED);
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.RED);
+		btnOk.setPrefSize(80, 40);
 	}
 
 	public void components() {
@@ -60,17 +62,12 @@ public class ErrorApp extends Application implements ControllerApp {
 		panel = new Panel(Strings.lblErro);
 		lblMsg = new Label(mensagem.toUpperCase());
 		btnOk = new JFXButton(Strings.btnOk);
-		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.RED);
-		btnOk.setPrefSize(80, 40);
 		pane.getChildren().addAll(lblMsg, btnOk);
 		panel.setBody(pane);
 
 	}
 
 	public void listeners() {
-		btnOk.setOnAction(e -> stage.close());
-
+		btnOk.setOnMouseClicked(e -> stage.close());
 	}
 }

@@ -6,7 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton.ButtonType;
 
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class FinalizarApp extends Application implements ControllerApp {
+public class FinalizarApp extends Application implements FunctionApp {
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -34,7 +34,6 @@ public class FinalizarApp extends Application implements ControllerApp {
 		components();
 		listeners();
 		decorator = new JFXDecorator(stage, panel, false, false, true);
-		decorator.setCustomMaximize(true);
 		Scene scene = new Scene(decorator, 270, 190);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().addAll("b", "panel-primary");
@@ -48,8 +47,12 @@ public class FinalizarApp extends Application implements ControllerApp {
 	public void layout() {
 		lblConcluir.setLayoutX((pane.getWidth() - lblConcluir.getWidth()) / 2);
 		lblConcluir.setLayoutY(5);
-		btnOk.setLayoutX((pane.getWidth() - btnOk.getWidth()) / 2);
+		btnOk.setLayoutX(70);
 		btnOk.setLayoutY(45);
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.BLUE);
+		btnOk.setPrefSize(80, 30);
 	}
 
 	public void components() {
@@ -58,10 +61,6 @@ public class FinalizarApp extends Application implements ControllerApp {
 		lblConcluir = new Label(Strings.lblConcluir);
 		lblConcluir.setFont(Font.font(13));
 		btnOk = new JFXButton(Strings.btnOk);
-		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.BLUE);
-		btnOk.setPrefSize(80, 30);
 		pane.getChildren().addAll(lblConcluir, btnOk);
 		panel.setBody(pane);
 	}
@@ -69,4 +68,5 @@ public class FinalizarApp extends Application implements ControllerApp {
 	public void listeners() {
 		btnOk.setOnMouseClicked(e -> stage.close());
 	}
+
 }

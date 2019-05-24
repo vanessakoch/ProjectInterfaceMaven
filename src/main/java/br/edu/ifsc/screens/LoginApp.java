@@ -5,8 +5,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 import com.jfoenix.controls.JFXDecorator;
-
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class LoginApp extends Application implements ControllerApp {
+public class LoginApp extends Application implements FunctionApp {
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -56,25 +55,24 @@ public class LoginApp extends Application implements ControllerApp {
 		txtLogin.setLayoutY(90);
 		txtSenha.setLayoutX((pane.getWidth() - txtSenha.getWidth()) / 2);
 		txtSenha.setLayoutY(130);
-		btnEntrar.setLayoutX((pane.getWidth() - btnEntrar.getWidth()) / 2);
+		btnEntrar.setLayoutX(180);
 		btnEntrar.setLayoutY(190);
-
+		btnEntrar.setButtonType(ButtonType.RAISED);
+		btnEntrar.setStyle("-fx-background-color: #B71C1C");
+		btnEntrar.setTextFill(Color.WHITE);
+		btnEntrar.setPrefSize(100, 40);
 	}
 
 	public void components() {
 		pane = new AnchorPane();
-		panel = new Panel(Strings.lblTransportadora);
 		txtLogin = new TextField();
 		txtSenha = new PasswordField();
+		panel = new Panel(Strings.lblTransportadora);
 		lblLogin = new Label(Strings.lblLogin);
 		txtLogin.setPromptText(Strings.txtLogin);
 		txtSenha.setPromptText(Strings.txtSenha);
 		btnEntrar = new JFXButton(Strings.btnEntrar);
 		lblLogin.setFont(Font.font(14));
-		btnEntrar.setButtonType(ButtonType.RAISED);
-		btnEntrar.setStyle("-fx-background-color: #B71C1C");
-		btnEntrar.setTextFill(Color.WHITE);
-		btnEntrar.setPrefSize(100, 40);
 		pane.getChildren().addAll(lblLogin, txtLogin, txtSenha, btnEntrar);
 		panel.setBody(pane);
 	}

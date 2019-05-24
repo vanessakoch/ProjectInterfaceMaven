@@ -1,12 +1,10 @@
 package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton.ButtonType;
-
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CTeApp extends Application implements ControllerApp {
+public class CTeApp extends Application implements FunctionApp {
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -182,6 +180,11 @@ public class CTeApp extends Application implements ControllerApp {
 		dtVencimento.setLayoutY(430);
 		dtData.setLayoutX(595);
 		dtData.setLayoutY(490);
+		
+		btnFinalizar.setButtonType(ButtonType.RAISED);
+		btnFinalizar.setStyle("-fx-background-color: #FAFAFA");
+		btnFinalizar.setTextFill(Color.BLUE);
+		btnFinalizar.setPrefSize(90, 45);
 
 	}
 
@@ -220,10 +223,6 @@ public class CTeApp extends Application implements ControllerApp {
 		btnImprimir = new Button(Strings.btnImprimir);
 		btnVoltar = new Button(Strings.btnVoltar);
 		btnFinalizar = new JFXButton(Strings.btnFinalizar);
-		btnFinalizar.setButtonType(ButtonType.RAISED);
-		btnFinalizar.setStyle("-fx-background-color: #FAFAFA");
-		btnFinalizar.setTextFill(Color.BLUE);
-		btnFinalizar.setPrefSize(90, 45);
 
 		// txtFields
 		txtCte = new TextField();

@@ -4,7 +4,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 import com.jfoenix.controls.JFXDecorator;
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -14,10 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class VeiculoApp extends Application implements ControllerApp {
-	
+public class VeiculoApp extends Application implements FunctionApp {
+
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtMotorista, txtMarca, txtModelo, txtPlaca, txtSeguro, txtApolice;
@@ -36,13 +37,11 @@ public class VeiculoApp extends Application implements ControllerApp {
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-
 		decorator = new JFXDecorator(stage, panel, false, false, true);
 		Scene scene = new Scene(decorator, 800, 500);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().add("panel-primary");
+		panel.getStyleClass().addAll("b", "panel-primary");
 		stage.setScene(scene);
-		stage.setResizable(false);
 		stage.show();
 		VeiculoApp.stage = stage;
 		layout();
@@ -92,6 +91,12 @@ public class VeiculoApp extends Application implements ControllerApp {
 
 		dtFabricacao.setLayoutX(205);
 		dtFabricacao.setLayoutY(195);
+		lblCadastro.setFont(Font.font(14));
+
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.BLUE);
+		btnOk.setPrefSize(90, 40);
 
 	}
 
@@ -104,7 +109,7 @@ public class VeiculoApp extends Application implements ControllerApp {
 		txtApolice = new TextField();
 		txtModelo = new TextField();
 		txtPlaca = new TextField();
-		lblCadastro = new Label(Strings.lblCadastro);
+		lblCadastro = new Label(Strings.lblCadV);
 		lblMotorista = new Label(Strings.lblMotorista);
 		lblMarca = new Label(Strings.lblMarca);
 		lblAno = new Label(Strings.lblAno);
@@ -120,16 +125,11 @@ public class VeiculoApp extends Application implements ControllerApp {
 		pane.getChildren().addAll(lblCadastro, lblMotorista, lblMarca, lblAno, lblModelo, txtSeguro, txtApolice,
 				lblSeguro, lblApolice, lblPlaca, btnOk, btnVoltar, txtMotorista, txtMarca, txtModelo, txtPlaca,
 				dtFabricacao);
-		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.BLUE);
-		btnOk.setPrefSize(90, 40);
 		panel.setBody(pane);
 
 	}
 
 	public void listeners() {
-
 		btnVoltar.setOnAction(volta -> {
 			try {
 				new MenuApp().start(new Stage());

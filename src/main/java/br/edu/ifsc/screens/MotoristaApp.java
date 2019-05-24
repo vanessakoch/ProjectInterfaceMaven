@@ -4,7 +4,8 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
-import br.edu.ifsc.controller.ControllerApp;
+
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -14,9 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class MotoristaApp extends Application implements ControllerApp {
+public class MotoristaApp extends Application implements FunctionApp {
 	
 	private AnchorPane pane;
 	private Panel panel;
@@ -89,17 +91,24 @@ public class MotoristaApp extends Application implements ControllerApp {
 		dtNascimento.setLayoutX(530);
 		dtNascimento.setLayoutY(255);
 		decorator.setCustomMaximize(true);
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #FAFAFA");
+		btnOk.setTextFill(Color.BLUE);
+		btnOk.setPrefSize(90, 40);
+		lblCadastro.getStyleClass().setAll("strong");
+		lblCadastro.setFont(Font.font(14));
+		
 	}
 
 	public void components() {
 		pane = new AnchorPane();
-		panel = new Panel(Strings.lblTransportadora);
 		txtNome = new TextField();
 		txtEndereco = new TextField();
 		txtCnh = new TextField();
 		txtCidade = new TextField();
 		txtPlaca = new TextField();
-		lblCadastro = new Label(Strings.lblCadastro);
+		panel = new Panel(Strings.lblTransportadora);
+		lblCadastro = new Label(Strings.lblCadM);
 		lblNome = new Label(Strings.lblNome);
 		lblEndereco = new Label(Strings.lblEndereco);
 		lblCnh = new Label(Strings.lblCnh);
@@ -111,13 +120,7 @@ public class MotoristaApp extends Application implements ControllerApp {
 		btnVoltar = new Button(Strings.btnVoltar);
 		dtValidade = new DatePicker();
 		dtNascimento = new DatePicker();
-		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.BLUE);
-		btnOk.setPrefSize(90, 40);
-		panel.setBody(pane);
 
-		lblCadastro.getStyleClass().setAll("strong");
 		pane.getChildren().addAll(lblCadastro, lblNome, lblEndereco, lblCnh, lblCidade, lblValidade, lblNascimento,
 				lblPlaca, btnOk, btnVoltar, txtNome, txtEndereco, txtCnh, txtCidade, txtPlaca, dtValidade,
 				dtNascimento);

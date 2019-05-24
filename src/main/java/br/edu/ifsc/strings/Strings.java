@@ -1,7 +1,7 @@
 package br.edu.ifsc.strings;
 
 public class Strings {
-	public static final String lblTransportadora = "Transportadora NewWay";
+	public static final String lblTransportadora = "Transportadora";
 	public static final String btnEntrar = "Entrar";
 	public static final String menuExit = "Sair";
 	public static final String btnOk = "OK";
@@ -74,7 +74,8 @@ public class Strings {
 	public static final String lblConcluir = "Concluído com sucesso!";
 	public static final String semLogin = "Digite o usuário!";
 	public static final String semSenha = "Digite a senha!";
-	public static final String lblCadastro = "CADASTRO";
+	public static final String lblCadV = "Cadastro de Veículo";
+	public static final String lblCadM = "Cadastro de Motorista";
 	public static final String lblNome = "Nome Completo";
 	public static final String lblEndereco = "Endereço";
 	public static final String lblCnh = "Carteira de Motorista";
@@ -88,4 +89,14 @@ public class Strings {
 	public static final String lblAno = "Data de Fabricação";
 	public static final String lblErro = "Erro";
 	public static final String lblSubFrase = "High quality transport and logistics services";
+	public static final String lblCodMDF = "Código MDFe";
+	public static final String lblVeiculo = "Veículo";
+	public static final String lblRS = "Responsável Seguro";
+	public static final String lblDtSaida = "Data de Saída";
+	public static final String lblDtChegada = "Data de Chegada";
+	public static final String lblDtEmissao = "Data de Emissão";
+	public static final String lblUFC = "UF (carregamento)";
+	public static final String lblUFD = "UF (descarregamento)";
+	public static final String lblChaveMdfe = "Chave Acesso MDFe";
+	public static final String lblManifesto = "Manifesto Eletrônico de Documentos Fiscais - MDFe";
 }

@@ -4,7 +4,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 import com.jfoenix.controls.JFXDecorator;
-import br.edu.ifsc.controller.ControllerApp;
+import br.edu.ifsc.function.FunctionApp;
 import br.edu.ifsc.strings.Strings;
 import br.edu.ifsc.util.GerenciaCte;
 import javafx.application.Application;
@@ -13,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class GerenciaCteApp extends Application implements ControllerApp {
+public class GerenciaCteApp extends Application implements FunctionApp {
 	
 	private TableView<GerenciaCte> table;
 	private TableColumn<GerenciaCte, String> id;
@@ -56,7 +56,9 @@ public class GerenciaCteApp extends Application implements ControllerApp {
 		btnVoltar.setLayoutY(10);
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
-
+		btnVoltar.setButtonType(ButtonType.RAISED);
+		btnVoltar.setStyle("-fx-background-color: #B71C1C");
+		btnVoltar.setPrefSize(90, 40);
 	}
 
 	public void components() {
@@ -73,11 +75,8 @@ public class GerenciaCteApp extends Application implements ControllerApp {
 		table.getColumns().add(remetente);
 		table.getColumns().add(situacao);
 		table.getColumns().add(valorNota);
-
 		btnVoltar = new JFXButton(Strings.btnVoltar);
-		btnVoltar.setButtonType(ButtonType.RAISED);
-		btnVoltar.setStyle("-fx-background-color: #3949AB");
-		btnVoltar.setPrefSize(90, 40);
+		
 		panel.setBody(table);
 		panel.setHeading(btnVoltar);
 	}
@@ -85,7 +84,7 @@ public class GerenciaCteApp extends Application implements ControllerApp {
 	public void listeners() {
 		btnVoltar.setOnAction(volta -> {
 			try {
-				new MenuApp().start(new Stage());
+				new CTeApp().start(new Stage());
 				GerenciaCteApp.stage.close();
 			} catch (Exception volta1) {
 				volta1.printStackTrace();
