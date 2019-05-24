@@ -65,6 +65,7 @@ public class FinalizaCadApp extends Application implements Function {
 	}
 
 	public void listeners() {
+	
 		btnOk.setOnMouseClicked(e -> stage.close());
 	}
 

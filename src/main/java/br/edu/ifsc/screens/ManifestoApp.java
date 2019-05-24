@@ -189,7 +189,15 @@ public class ManifestoApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnVoltar.setOnAction(volta -> {
+		btnOk.setOnAction(e -> {
+			System.out.println(Strings.logMdfe);
+		});
+
+		btnVoltar.setOnAction(e -> {
+			System.out.println(Strings.logVoltar);
+		});
+
+		btnVoltar.setOnMouseClicked(volta -> {
 			try {
 				new MenuApp().start(new Stage());
 				ManifestoApp.stage.close();

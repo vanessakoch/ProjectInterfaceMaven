@@ -106,4 +106,12 @@ public class Strings {
 	public static final String lblFinalizaCte = "CTE FINALIZADO COM SUCESSO";
 	public static final String lblTitCte = "TRANSPORTADORA - GERENCIAMENTO DE CTE";
 	public static final String lblTitMdfe = "TRANSPORTADORA - GERENCIAMENTO DE MDFE";
+	public static final String logCte = "O botão finalizar CTe foi pressionado";
+	public static final String logMdfe = "O botão finalizar MDFe foi pressionado";
+	public static final String logCadM = "O botão que concluí o cadastro de motorista foi pressionado";
+	public static final String logCadV = "O botão que concluí o cadastro de veículo foi pressionado";
+	public static final String logPesquisa = "O botão pesquisar CTe foi pressionado";
+	public static final String logVoltar = "O botão voltar para o menu foi pressionado";
+	public static final String logEntrar = "O botão entrar foi pressionado";
+
 }

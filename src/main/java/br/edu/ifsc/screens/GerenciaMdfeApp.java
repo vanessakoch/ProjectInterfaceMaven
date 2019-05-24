@@ -59,7 +59,7 @@ public class GerenciaMdfeApp extends Application implements Function {
 		lblTitulo.setLayoutY(40);
 		btnVoltar.setLayoutX(60);
 		btnVoltar.setLayoutY(10);
-		
+
 		btnVoltar.setButtonType(ButtonType.RAISED);
 		btnVoltar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
 		btnVoltar.setTextFill(Color.BLUE);
@@ -91,7 +91,11 @@ public class GerenciaMdfeApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnVoltar.setOnAction(volta -> {
+		btnVoltar.setOnAction(e -> {
+			System.out.println(Strings.logVoltar);
+		});
+
+		btnVoltar.setOnMouseClicked(volta -> {
 			try {
 				new MenuApp().start(new Stage());
 				GerenciaMdfeApp.stage.close();

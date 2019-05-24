@@ -131,7 +131,15 @@ public class MotoristaApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnVoltar.setOnAction(volta -> {
+		btnOk.setOnAction(e -> {
+			System.out.println(Strings.logCadM);
+		});
+
+		btnVoltar.setOnAction(e -> {
+			System.out.println(Strings.logVoltar);
+		});
+
+		btnVoltar.setOnMouseClicked(volta -> {
 			try {
 				new MenuApp().start(new Stage());
 				MotoristaApp.stage.close();

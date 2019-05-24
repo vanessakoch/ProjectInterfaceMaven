@@ -55,7 +55,7 @@ public class GerenciaCteApp extends Application implements Function {
 		remetente.setMinWidth(200);
 		situacao.setMinWidth(200);
 		valorNota.setMinWidth(200);
-		
+
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
 		btnVoltar.setButtonType(ButtonType.RAISED);
@@ -65,7 +65,7 @@ public class GerenciaCteApp extends Application implements Function {
 
 		panel.setStyle("-fx-background-color: #ECEFF1");
 		table.setStyle("-fx-background-color: #FAFAFA");
-		
+
 	}
 
 	public void components() {
@@ -89,7 +89,11 @@ public class GerenciaCteApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnVoltar.setOnAction(volta -> {
+		btnVoltar.setOnAction(e -> {
+			System.out.println(Strings.logVoltar);
+		});
+
+		btnVoltar.setOnMouseClicked(volta -> {
 			try {
 				new MenuApp().start(new Stage());
 				GerenciaCteApp.stage.close();

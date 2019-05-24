@@ -291,7 +291,19 @@ public class CTeApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnVoltar.setOnAction(volta -> {
+		btnFinalizar.setOnAction(e -> {
+			System.out.println(Strings.logCte);
+		});
+
+		btnPesquisar.setOnAction(e -> {
+			System.out.println(Strings.logPesquisa);
+		});
+
+		btnVoltar.setOnAction(e -> {
+			System.out.println(Strings.logVoltar);
+		});
+
+		btnVoltar.setOnMouseClicked(volta -> {
 			try {
 				new MenuApp().start(new Stage());
 				CTeApp.stage.close();

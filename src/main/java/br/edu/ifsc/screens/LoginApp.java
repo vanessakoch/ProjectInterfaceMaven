@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -64,7 +67,6 @@ public class LoginApp extends Application implements Function {
 		lblLogin.getStyleClass().add("b");
 	}
 
-	
 	public void components() {
 		pane = new AnchorPane();
 		txtLogin = new TextField();
@@ -80,7 +82,18 @@ public class LoginApp extends Application implements Function {
 	}
 
 	public void listeners() {
-		btnEntrar.setOnAction(entrar -> {
+		btnEntrar.setOnAction(e -> {
+			System.out.println(Strings.logEntrar);
+		});
+
+		txtLogin.setOnKeyPressed(k -> {
+			final KeyCombination ENTER = new KeyCodeCombination(KeyCode.ENTER);
+			if (ENTER.match(k)) {
+				txtSenha.requestFocus();
+			}
+		});
+
+		btnEntrar.setOnMouseClicked(entrar -> {
 			if (txtLogin.getText().isEmpty()) {
 				try {
 					new ErrorApp(Strings.semLogin).start(new Stage());
@@ -113,6 +126,7 @@ public class LoginApp extends Application implements Function {
 				LoginApp.stage.close();
 			} catch (Exception entrar3) {
 				entrar3.printStackTrace();
+
 			}
 
 		});
