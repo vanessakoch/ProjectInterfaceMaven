@@ -156,6 +156,15 @@ public class MenuApp extends Application implements Function {
 				e1.printStackTrace();
 			}
 		});
+		
+		sub13.setOnAction(mdfe -> {
+			try {
+				new GerenciaMdfeApp().start(new Stage());
+				MenuApp.stage.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 
 }

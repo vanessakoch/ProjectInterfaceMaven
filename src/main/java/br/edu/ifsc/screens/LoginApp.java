@@ -64,6 +64,7 @@ public class LoginApp extends Application implements Function {
 		lblLogin.getStyleClass().add("b");
 	}
 
+	
 	public void components() {
 		pane = new AnchorPane();
 		txtLogin = new TextField();

@@ -71,7 +71,7 @@ public class Strings {
 	public static final String btnImprimir = "Imprimir CTe";
 	public static final String btnVoltar = "Voltar";
 	public static final String lblCerto = "Tudo certo!";
-	public static final String lblConcluir = "CONCLUÍDO COM SUCESSO";
+	public static final String lblConcluir = "CADASTRO CONCLUÍDO COM SUCESSO";
 	public static final String lblFinalizaMdfe = "MDFE FINALIZADO COM SUCESSO";
 	public static final String semLogin = "Digite o usuário!";
 	public static final String semSenha = "Digite a senha!";
@@ -104,4 +104,6 @@ public class Strings {
 	public static final String btnImpMdf = "Imprimir MDFe";
 	public static final String lblConhecimento = "CONHECIMENTO DE TRANSPORTE - CTe";
 	public static final String lblFinalizaCte = "CTE FINALIZADO COM SUCESSO";
+	public static final String lblTitCte = "TRANSPORTADORA - GERENCIADOR DE CTE";
+	public static final String lblTitMdfe = "TRANSPORTADORA - GERENCIADOR DE MDFE";
 }
