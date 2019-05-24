@@ -143,7 +143,7 @@ public class MotoristaApp extends Application implements Function {
 
 		btnOk.setOnMouseClicked(ok -> {
 			try {
-				new FinalizaMdfeApp().start(new Stage());
+				new FinalizaCadApp().start(new Stage());
 			} catch (Exception ok1) {
 				ok1.printStackTrace();
 			}

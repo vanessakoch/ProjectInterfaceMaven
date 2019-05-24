@@ -39,7 +39,7 @@ public class GerenciaMdfeApp extends Application implements Function {
 		listeners();
 		decorator = new JFXDecorator(stage, panel);
 		decorator.setCustomMaximize(true);
-		Scene scene = new Scene(decorator, 1000, 550);
+		Scene scene = new Scene(decorator, 1110, 550);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
 		panel.getStyleClass().addAll("b", "panel-primary");
 		stage.setScene(scene);
@@ -66,7 +66,7 @@ public class GerenciaMdfeApp extends Application implements Function {
 		btnVoltar.setPrefSize(80, 30);
 
 		panel.setStyle("-fx-background-color: #ECEFF1");
-		table.setStyle("-fx-background-color: #E0F2F1");
+		table.setStyle("-fx-background-color: #FAFAFA");
 
 	}
 

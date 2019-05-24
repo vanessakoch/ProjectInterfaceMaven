@@ -99,11 +99,11 @@ public class Strings {
 	public static final String lblUFC = "UF (carregamento)";
 	public static final String lblUFD = "UF (descarregamento)";
 	public static final String lblChaveMdfe = "Chave Acesso MDFe";
-	public static final String lblManifesto = "MANIFESTO ELETRÔNICO DE DOCUMENTOS FISCAIS - MDFe";
+	public static final String lblManifesto = "MANIFESTO ELETRÔNICO DE DOCUMENTOS FISCAIS - MDFE";
 	public static final String btnVisMdf = "Visualizar MDFe";
 	public static final String btnImpMdf = "Imprimir MDFe";
-	public static final String lblConhecimento = "CONHECIMENTO DE TRANSPORTE - CTe";
+	public static final String lblConhecimento = "CONHECIMENTO DE TRANSPORTE - CTE";
 	public static final String lblFinalizaCte = "CTE FINALIZADO COM SUCESSO";
-	public static final String lblTitCte = "TRANSPORTADORA - GERENCIADOR DE CTE";
-	public static final String lblTitMdfe = "TRANSPORTADORA - GERENCIADOR DE MDFE";
+	public static final String lblTitCte = "TRANSPORTADORA - GERENCIAMENTO DE CTE";
+	public static final String lblTitMdfe = "TRANSPORTADORA - GERENCIAMENTO DE MDFE";
 }
