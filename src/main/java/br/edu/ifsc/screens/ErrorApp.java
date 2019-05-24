@@ -4,7 +4,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton.ButtonType;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ErrorApp extends Application implements FunctionApp {
+public class ErrorApp extends Application implements Function {
 
 	private Panel panel;
 	private AnchorPane pane;
@@ -46,15 +46,16 @@ public class ErrorApp extends Application implements FunctionApp {
 		lblMsg.setLayoutX(25);
 		lblMsg.setLayoutY(20);
 		btnOk.setLayoutX(165);
-		btnOk.setLayoutY(10);
-		panel.getStyleClass().add("panel-primary");
-		lblMsg.getStyleClass().add("b");
+		btnOk.setLayoutY(15);
+		panel.setStyle("-fx-background-color: #ECEFF1;");
+		panel.getStyleClass().addAll("b", "panel-danger");
+		lblMsg.setStyle("-fx-text-fill: #D34336;");
 		lblMsg.setFont(Font.font(13));
 		lblMsg.setTextFill(Color.RED);
 		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.RED);
-		btnOk.setPrefSize(80, 40);
+		btnOk.setStyle("-fx-background-color: #B71C1C; -fx-cursor: hand");
+		btnOk.setTextFill(Color.WHITE);
+		btnOk.setPrefSize(80, 30);
 	}
 
 	public void components() {

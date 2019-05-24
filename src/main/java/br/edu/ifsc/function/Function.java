@@ -2,7 +2,7 @@ package br.edu.ifsc.function;
 
 import javafx.stage.Stage;
 
-public interface FunctionApp {
+public interface Function {
 
 	public void start(Stage stage) throws Exception;
 

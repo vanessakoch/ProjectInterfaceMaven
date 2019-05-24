@@ -4,11 +4,10 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton.ButtonType;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,15 +15,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class CTeApp extends Application implements FunctionApp {
+public class CTeApp extends Application implements Function {
 
 	private AnchorPane pane;
 	private Panel panel;
 	private Label lblCte, lblEmitente, lblDestinario, lblRemetente, lblChave, lblCidadeE, lblCnpjE, lblCidadeR,
 			lblCnpjR, lblCidadeD, lblCnpjD, lblCfop, lblProduto, lblPeso, lblSaida, lblVencimento, lblData,
-			lblValorCarga, lblSeguro, lblApolice, lblFrete, lblPedagio, lblCiot, lblTotalReceber, lblTotalFrete;
-	private Button btnPesquisar, btnXml, btnVisualizar, btnImprimir, btnVoltar;
-	private JFXButton btnFinalizar;
+			lblValorCarga, lblSeguro, lblApolice, lblFrete, lblPedagio, lblCiot, lblTotalReceber, lblTotalFrete,
+			lblConhecimento;
+	private JFXButton btnFinalizar, btnVoltar, btnPesquisar, btnXml, btnVisualizar, btnImprimir;
 	private TextField txtCte, txtEmissor, txtRemetente, txtDestinario, txtChave, txtCidadeE, txtCnpjE, txtCidadeR,
 			txtCnpjR, txtCidadeD, txtCnpjD, txtCfop, txtProduto, txtPeso, txtValorCarga, txtSeguro, txtApolice,
 			txtFrete, txtPedagio, txtCiot, txtTotalReceber, txtTotalFrete;
@@ -52,7 +51,11 @@ public class CTeApp extends Application implements FunctionApp {
 	}
 
 	public void layout() {
+		panel.setStyle("-fx-background-color: #ECEFF1;");
+
 		// labels
+		lblConhecimento.setLayoutX(300);
+		lblConhecimento.setLayoutY(0);
 		lblChave.setLayoutX(355);
 		lblChave.setLayoutY(50);
 		lblCte.setLayoutY(110);
@@ -107,20 +110,16 @@ public class CTeApp extends Application implements FunctionApp {
 		// buttons
 		btnFinalizar.setLayoutX(35);
 		btnFinalizar.setLayoutY(535);
-		btnFinalizar.setMaxWidth(100);
-		btnFinalizar.setMinWidth(100);
-		btnImprimir.setLayoutX(155);
+		btnImprimir.setLayoutX(145);
 		btnImprimir.setLayoutY(550);
 		btnVisualizar.setLayoutX(260);
 		btnVisualizar.setLayoutY(550);
-		btnPesquisar.setLayoutX(665);
+		btnPesquisar.setLayoutX(670);
 		btnPesquisar.setLayoutY(30);
 		btnXml.setLayoutY(70);
 		btnXml.setLayoutX(670);
 		btnVoltar.setLayoutX(30);
 		btnVoltar.setLayoutY(30);
-		btnVoltar.setMaxWidth(100);
-		btnVoltar.setMinWidth(100);
 
 		// txtFields
 		txtChave.setLayoutX(180);
@@ -180,17 +179,43 @@ public class CTeApp extends Application implements FunctionApp {
 		dtVencimento.setLayoutY(430);
 		dtData.setLayoutX(595);
 		dtData.setLayoutY(490);
-		
+
 		btnFinalizar.setButtonType(ButtonType.RAISED);
-		btnFinalizar.setStyle("-fx-background-color: #FAFAFA");
-		btnFinalizar.setTextFill(Color.BLUE);
-		btnFinalizar.setPrefSize(90, 45);
+		btnFinalizar.setStyle("-fx-background-color: #1A237E; -fx-cursor: hand");
+		btnFinalizar.setTextFill(Color.WHITE);
+		btnFinalizar.setPrefSize(100, 40);
+
+		btnVoltar.setButtonType(ButtonType.RAISED);
+		btnVoltar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnVoltar.setTextFill(Color.BLUE);
+		btnVoltar.setPrefSize(80, 30);
+
+		btnXml.setButtonType(ButtonType.RAISED);
+		btnXml.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnXml.setTextFill(Color.BLUE);
+		btnXml.setPrefSize(100, 20);
+
+		btnPesquisar.setButtonType(ButtonType.RAISED);
+		btnPesquisar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnPesquisar.setTextFill(Color.BLUE);
+		btnPesquisar.setPrefSize(100, 20);
+
+		btnVisualizar.setButtonType(ButtonType.RAISED);
+		btnVisualizar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnVisualizar.setTextFill(Color.BLUE);
+		btnVisualizar.setPrefSize(100, 20);
+
+		btnImprimir.setButtonType(ButtonType.RAISED);
+		btnImprimir.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnImprimir.setTextFill(Color.BLUE);
+		btnImprimir.setPrefSize(100, 20);
 
 	}
 
 	public void components() {
 		pane = new AnchorPane();
 		lblCte = new Label(Strings.lblCte);
+		lblConhecimento = new Label(Strings.lblConhecimento);
 		lblEmitente = new Label(Strings.lblEmitente);
 		lblRemetente = new Label(Strings.lblRemetente);
 		lblDestinario = new Label(Strings.lblDestinario);
@@ -217,11 +242,11 @@ public class CTeApp extends Application implements FunctionApp {
 		lblData = new Label(Strings.lblData);
 
 		// btn
-		btnPesquisar = new Button(Strings.btnPesquisar);
-		btnXml = new Button(Strings.btnXml);
-		btnVisualizar = new Button(Strings.btnVisualizar);
-		btnImprimir = new Button(Strings.btnImprimir);
-		btnVoltar = new Button(Strings.btnVoltar);
+		btnPesquisar = new JFXButton(Strings.btnPesquisar);
+		btnXml = new JFXButton(Strings.btnXml);
+		btnVisualizar = new JFXButton(Strings.btnVisualizar);
+		btnImprimir = new JFXButton(Strings.btnImprimir);
+		btnVoltar = new JFXButton(Strings.btnVoltar);
 		btnFinalizar = new JFXButton(Strings.btnFinalizar);
 
 		// txtFields
@@ -255,13 +280,13 @@ public class CTeApp extends Application implements FunctionApp {
 
 		panel = new Panel(Strings.lblTransportadora);
 
-		pane.getChildren().addAll(lblCte, lblEmitente, lblRemetente, lblDestinario, lblChave, lblCidadeE, lblCnpjE,
-				lblCidadeR, lblCnpjR, lblCidadeD, lblCnpjD, lblCfop, lblProduto, lblPeso, lblValorCarga, lblSeguro,
-				lblApolice, lblFrete, lblPedagio, lblCiot, lblTotalReceber, lblTotalFrete, btnFinalizar, btnPesquisar,
-				btnXml, btnVisualizar, btnImprimir, btnVoltar, txtCte, txtEmissor, txtRemetente, txtDestinario,
-				txtChave, txtCidadeE, txtCnpjE, txtCidadeR, txtCnpjR, txtCidadeD, txtCnpjD, txtCfop, txtProduto,
-				txtPeso, txtValorCarga, txtSeguro, txtApolice, txtFrete, txtPedagio, txtCiot, txtTotalReceber,
-				txtTotalFrete, lblSaida, lblVencimento, lblData, dtData, dtSaida, dtVencimento);
+		pane.getChildren().addAll(lblCte, lblConhecimento, lblEmitente, lblRemetente, lblDestinario, lblChave,
+				lblCidadeE, lblCnpjE, lblCidadeR, lblCnpjR, lblCidadeD, lblCnpjD, lblCfop, lblProduto, lblPeso,
+				lblValorCarga, lblSeguro, lblApolice, lblFrete, lblPedagio, lblCiot, lblTotalReceber, lblTotalFrete,
+				btnFinalizar, btnPesquisar, btnXml, btnVisualizar, btnImprimir, btnVoltar, txtCte, txtEmissor,
+				txtRemetente, txtDestinario, txtChave, txtCidadeE, txtCnpjE, txtCidadeR, txtCnpjR, txtCidadeD, txtCnpjD,
+				txtCfop, txtProduto, txtPeso, txtValorCarga, txtSeguro, txtApolice, txtFrete, txtPedagio, txtCiot,
+				txtTotalReceber, txtTotalFrete, lblSaida, lblVencimento, lblData, dtData, dtSaida, dtVencimento);
 		panel.setBody(pane);
 	}
 

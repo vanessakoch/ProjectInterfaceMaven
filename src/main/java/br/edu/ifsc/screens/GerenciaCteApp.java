@@ -4,7 +4,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 import com.jfoenix.controls.JFXDecorator;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import br.edu.ifsc.util.GerenciaCte;
 import javafx.application.Application;
@@ -13,8 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class GerenciaCteApp extends Application implements FunctionApp {
-	
+public class GerenciaCteApp extends Application implements Function {
+
 	private TableView<GerenciaCte> table;
 	private TableColumn<GerenciaCte, String> id;
 	private TableColumn<GerenciaCte, String> data;
@@ -38,7 +38,7 @@ public class GerenciaCteApp extends Application implements FunctionApp {
 		decorator.setCustomMaximize(true);
 		Scene scene = new Scene(decorator, 1000, 550);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-		panel.getStyleClass().add("panel-primary");
+		panel.getStyleClass().addAll("b", "panel-primary");
 		stage.setScene(scene);
 		stage.show();
 		GerenciaCteApp.stage = stage;
@@ -57,8 +57,11 @@ public class GerenciaCteApp extends Application implements FunctionApp {
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
 		btnVoltar.setButtonType(ButtonType.RAISED);
-		btnVoltar.setStyle("-fx-background-color: #B71C1C");
-		btnVoltar.setPrefSize(90, 40);
+		btnVoltar.setPrefSize(80, 30);
+		btnVoltar.setStyle("-fx-background-color: #1A237E; -fx-cursor: hand");
+		panel.setStyle("-fx-background-color: #BBDEFB");
+		table.setStyle("-fx-background-color: #ECEFF1");
+
 	}
 
 	public void components() {
@@ -76,7 +79,7 @@ public class GerenciaCteApp extends Application implements FunctionApp {
 		table.getColumns().add(situacao);
 		table.getColumns().add(valorNota);
 		btnVoltar = new JFXButton(Strings.btnVoltar);
-		
+
 		panel.setBody(table);
 		panel.setHeading(btnVoltar);
 	}
@@ -84,7 +87,7 @@ public class GerenciaCteApp extends Application implements FunctionApp {
 	public void listeners() {
 		btnVoltar.setOnAction(volta -> {
 			try {
-				new CTeApp().start(new Stage());
+				new MenuApp().start(new Stage());
 				GerenciaCteApp.stage.close();
 			} catch (Exception volta1) {
 				volta1.printStackTrace();

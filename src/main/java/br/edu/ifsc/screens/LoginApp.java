@@ -5,7 +5,7 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
 import com.jfoenix.controls.JFXDecorator;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class LoginApp extends Application implements FunctionApp {
+public class LoginApp extends Application implements Function {
 
 	private AnchorPane pane;
 	private Panel panel;
@@ -36,7 +36,6 @@ public class LoginApp extends Application implements FunctionApp {
 	public void start(Stage stage) throws Exception {
 		components();
 		listeners();
-
 		decorator = new JFXDecorator(stage, panel, false, false, true);
 		Scene scene = new Scene(decorator, 500, 400);
 		scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
@@ -49,6 +48,7 @@ public class LoginApp extends Application implements FunctionApp {
 	}
 
 	public void layout() {
+		panel.setStyle("-fx-background-color: #ECEFF1;");
 		lblLogin.setLayoutX((pane.getWidth() - lblLogin.getWidth()) / 2);
 		lblLogin.setLayoutY(30);
 		txtLogin.setLayoutX((pane.getWidth() - txtLogin.getWidth()) / 2);
@@ -56,11 +56,12 @@ public class LoginApp extends Application implements FunctionApp {
 		txtSenha.setLayoutX((pane.getWidth() - txtSenha.getWidth()) / 2);
 		txtSenha.setLayoutY(130);
 		btnEntrar.setLayoutX(180);
-		btnEntrar.setLayoutY(190);
+		btnEntrar.setLayoutY(180);
 		btnEntrar.setButtonType(ButtonType.RAISED);
-		btnEntrar.setStyle("-fx-background-color: #B71C1C");
+		btnEntrar.setStyle("-fx-background-color: #B71C1C; -fx-cursor: hand");
 		btnEntrar.setTextFill(Color.WHITE);
 		btnEntrar.setPrefSize(100, 40);
+		lblLogin.getStyleClass().add("b");
 	}
 
 	public void components() {

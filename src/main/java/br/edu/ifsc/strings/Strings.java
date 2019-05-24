@@ -71,11 +71,11 @@ public class Strings {
 	public static final String btnImprimir = "Imprimir CTe";
 	public static final String btnVoltar = "Voltar";
 	public static final String lblCerto = "Tudo certo!";
-	public static final String lblConcluir = "Concluído com sucesso!";
+	public static final String lblConcluir = "CONCLUÍDO COM SUCESSO";
 	public static final String semLogin = "Digite o usuário!";
 	public static final String semSenha = "Digite a senha!";
-	public static final String lblCadV = "Cadastro de Veículo";
-	public static final String lblCadM = "Cadastro de Motorista";
+	public static final String lblCadV = "CADASTRO DE VEÍCULOS";
+	public static final String lblCadM = "CADASTRO DE MOTORISTAS";
 	public static final String lblNome = "Nome Completo";
 	public static final String lblEndereco = "Endereço";
 	public static final String lblCnh = "Carteira de Motorista";
@@ -98,5 +98,8 @@ public class Strings {
 	public static final String lblUFC = "UF (carregamento)";
 	public static final String lblUFD = "UF (descarregamento)";
 	public static final String lblChaveMdfe = "Chave Acesso MDFe";
-	public static final String lblManifesto = "Manifesto Eletrônico de Documentos Fiscais - MDFe";
+	public static final String lblManifesto = "MANIFESTO ELETRÔNICO DE DOCUMENTOS FISCAIS - MDFe";
+	public static final String btnVisMdf = "Visualizar MDFe";
+	public static final String btnImpMdf = "Imprimir MDFe";
+	public static final String lblConhecimento = "CONHECIMENTO DE TRANSPORTE - CTe";
 }

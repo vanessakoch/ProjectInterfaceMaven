@@ -4,12 +4,10 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
-
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,13 +16,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class MotoristaApp extends Application implements FunctionApp {
-	
+public class MotoristaApp extends Application implements Function {
+
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtNome, txtEndereco, txtCnh, txtCidade, txtPlaca;
-	private Button btnVoltar;
-	private JFXButton btnOk;
+	private JFXButton btnOk, btnVoltar;
 	private Label lblCadastro, lblNome, lblEndereco, lblCnh, lblCidade, lblValidade, lblNascimento, lblPlaca;
 	private DatePicker dtValidade, dtNascimento;
 	private static Stage stage;
@@ -50,7 +47,8 @@ public class MotoristaApp extends Application implements FunctionApp {
 	}
 
 	public void layout() {
-		lblCadastro.setLayoutX((pane.getWidth() - lblCadastro.getWidth()) / 2);
+		panel.setStyle("-fx-background-color: #ECEFF1;");
+		lblCadastro.setLayoutX(290);
 		lblCadastro.setLayoutY(10);
 		lblNome.setLayoutX(60);
 		lblNome.setLayoutY(80);
@@ -79,7 +77,7 @@ public class MotoristaApp extends Application implements FunctionApp {
 		txtPlaca.setLayoutX(530);
 		txtPlaca.setLayoutY(195);
 
-		btnOk.setLayoutX((pane.getWidth() - lblCadastro.getWidth()) / 2);
+		btnOk.setLayoutX(330);
 		btnOk.setLayoutY(320);
 		btnVoltar.setLayoutX(60);
 		btnVoltar.setLayoutY(10);
@@ -90,14 +88,19 @@ public class MotoristaApp extends Application implements FunctionApp {
 		dtValidade.setLayoutY(255);
 		dtNascimento.setLayoutX(530);
 		dtNascimento.setLayoutY(255);
-		decorator.setCustomMaximize(true);
-		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.BLUE);
-		btnOk.setPrefSize(90, 40);
 		lblCadastro.getStyleClass().setAll("strong");
-		lblCadastro.setFont(Font.font(14));
-		
+		lblCadastro.setFont(Font.font(13));
+
+		btnOk.setButtonType(ButtonType.RAISED);
+		btnOk.setStyle("-fx-background-color: #3F51B5; -fx-cursor: hand");
+		btnOk.setTextFill(Color.WHITE);
+		btnOk.setPrefSize(100, 40);
+
+		btnVoltar.setButtonType(ButtonType.RAISED);
+		btnVoltar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnVoltar.setTextFill(Color.BLUE);
+		btnVoltar.setPrefSize(80, 30);
+
 	}
 
 	public void components() {
@@ -117,7 +120,7 @@ public class MotoristaApp extends Application implements FunctionApp {
 		lblNascimento = new Label(Strings.lblNascimento);
 		lblPlaca = new Label(Strings.lblPlaca);
 		btnOk = new JFXButton(Strings.btnOk);
-		btnVoltar = new Button(Strings.btnVoltar);
+		btnVoltar = new JFXButton(Strings.btnVoltar);
 		dtValidade = new DatePicker();
 		dtNascimento = new DatePicker();
 

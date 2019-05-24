@@ -4,11 +4,10 @@ import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXButton.ButtonType;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,13 +16,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ManifestoApp extends Application implements FunctionApp {
+public class ManifestoApp extends Application implements Function {
 
 	private AnchorPane pane;
 	private Panel panel;
 	private TextField txtChaveMdfe, txtCod, txtVeiculo, txtRS, txtPlaca, txtMotorista, txtUFC, txtUFD, txtCTE;
-	private Button btnVoltar, btnXml, btnVisualizar, btnImprimir;
-	private JFXButton btnOk;
+	private JFXButton btnOk, btnVoltar, btnXml, btnVisualizar, btnImprimir;
 	private Label lblChaveMdfe, lblCod, lblVeiculo, lblRS, lblDtSaida, lblDtEmissao, lblDtChegada, lblPlaca,
 			lblMotorista, lblUFC, lblUFD, lblCte, lblManifesto;
 	private DatePicker dtSaida, dtChegada, dtEmissao;
@@ -50,6 +48,7 @@ public class ManifestoApp extends Application implements FunctionApp {
 	}
 
 	public void layout() {
+		panel.setStyle("-fx-background-color: #ECEFF1;");
 		txtChaveMdfe.setLayoutX(200);
 		txtChaveMdfe.setLayoutY(65);
 		txtChaveMdfe.setPrefWidth(390);
@@ -93,7 +92,7 @@ public class ManifestoApp extends Application implements FunctionApp {
 		lblDtSaida.setLayoutY(270);
 		lblCte.setLayoutX(70);
 		lblCte.setLayoutY(110);
-		lblManifesto.setLayoutX((pane.getWidth() - lblManifesto.getWidth()) / 2);
+		lblManifesto.setLayoutX(210);
 		lblManifesto.setLayoutY(0);
 		lblRS.setLayoutX(450);
 		lblRS.setLayoutY(110);
@@ -106,24 +105,45 @@ public class ManifestoApp extends Application implements FunctionApp {
 		lblDtChegada.setLayoutX(450);
 		lblDtChegada.setLayoutY(270);
 
-		btnOk.setLayoutX(370);
+		btnOk.setLayoutX(360);
 		btnOk.setLayoutY(330);
 		btnVoltar.setLayoutX(70);
-		btnVoltar.setLayoutY(20);
+		btnVoltar.setLayoutY(10);
 		btnVoltar.setMaxWidth(100);
 		btnVoltar.setMinWidth(100);
-
-		btnXml.setLayoutX(645);
+		btnXml.setLayoutX(640);
 		btnXml.setLayoutY(60);
 		btnVisualizar.setLayoutX(70);
 		btnVisualizar.setLayoutY(340);
-		btnImprimir.setLayoutX(180);
+		btnImprimir.setLayoutX(200);
 		btnImprimir.setLayoutY(340);
+
 		btnOk.setButtonType(ButtonType.RAISED);
-		btnOk.setStyle("-fx-background-color: #FAFAFA");
-		btnOk.setTextFill(Color.BLUE);
-		btnOk.setPrefSize(90, 40);
-		lblManifesto.setFont(Font.font(14));
+		btnOk.setStyle("-fx-background-color: #3F51B5; -fx-cursor: hand");
+		btnOk.setTextFill(Color.WHITE);
+		btnOk.setPrefSize(100, 40);
+		lblManifesto.setFont(Font.font(12));
+		lblManifesto.getStyleClass().setAll("strong");
+
+		btnVoltar.setButtonType(ButtonType.RAISED);
+		btnVoltar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnVoltar.setTextFill(Color.BLUE);
+		btnVoltar.setPrefSize(80, 30);
+
+		btnXml.setButtonType(ButtonType.RAISED);
+		btnXml.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnXml.setTextFill(Color.BLUE);
+		btnXml.setPrefSize(100, 20);
+
+		btnVisualizar.setButtonType(ButtonType.RAISED);
+		btnVisualizar.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnVisualizar.setTextFill(Color.BLUE);
+		btnVisualizar.setPrefSize(110, 20);
+
+		btnImprimir.setButtonType(ButtonType.RAISED);
+		btnImprimir.setStyle("-fx-background-color: #FAFAFA; -fx-cursor: hand");
+		btnImprimir.setTextFill(Color.BLUE);
+		btnImprimir.setPrefSize(110, 20);
 	}
 
 	public void components() {
@@ -153,10 +173,10 @@ public class ManifestoApp extends Application implements FunctionApp {
 		lblPlaca = new Label(Strings.lblPlaca);
 		lblManifesto = new Label(Strings.lblManifesto);
 		btnOk = new JFXButton(Strings.btnOk);
-		btnVoltar = new Button(Strings.btnVoltar);
-		btnXml = new Button(Strings.btnXml);
-		btnVisualizar = new Button(Strings.btnVisualizar);
-		btnImprimir = new Button(Strings.btnImprimir);
+		btnVoltar = new JFXButton(Strings.btnVoltar);
+		btnXml = new JFXButton(Strings.btnXml);
+		btnVisualizar = new JFXButton(Strings.btnVisMdf);
+		btnImprimir = new JFXButton(Strings.btnImpMdf);
 		dtChegada = new DatePicker();
 		dtSaida = new DatePicker();
 		dtEmissao = new DatePicker();

@@ -2,7 +2,7 @@ package br.edu.ifsc.screens;
 
 import org.kordamp.bootstrapfx.scene.layout.Panel;
 import com.jfoenix.controls.JFXDecorator;
-import br.edu.ifsc.function.FunctionApp;
+import br.edu.ifsc.function.Function;
 import br.edu.ifsc.strings.Strings;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MenuApp extends Application implements FunctionApp {
+public class MenuApp extends Application implements Function {
 
 	private MenuItem sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11, sub12, sub13, sub14, sub15,
 			sub16, sub17, sub18, sub19, sub20;
@@ -44,11 +44,12 @@ public class MenuApp extends Application implements FunctionApp {
 
 	public void layout() {
 		decorator.setCustomMaximize(true);
-		menuBar.setStyle("-fx-background-color: #BBDEFB");
+		menuBar.setStyle("-fx-background-color: #1A237E; -fx-cursor: hand; -fx-base: #263238;");
 		menuBar.getStyleClass().addAll("btn", "btn-group-vertical");
 		menuBar.setLayoutX(0);
 		menuBar.setLayoutY(30);
-		menuBar.setPrefSize(1500, 50);
+		menuBar.setPrefSize(1400, 50);
+		panel.setStyle("-fx-background-color: #ECEFF1;");
 	}
 
 	public void components() {
